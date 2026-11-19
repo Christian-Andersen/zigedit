@@ -1,0 +1,70 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "trailing-whitespace", args = [
+    "--markdown-linebreak-ext=md",
+  ] },
+  { id = "check-added-large-files" },
+  { id = "check-case-conflict" },
+  { id = "check-illegal-windows-names" },
+  { id = "end-of-file-fixer" },
+  { id = "requirements-txt-fixer" },
+  { id = "fix-byte-order-marker" },
+  { id = "forbid-new-submodules" },
+  { id = "check-json" },
+  { id = "check-json5" },
+  { id = "check-jsonc" },
+  { id = "pretty-format-json", args = [
+    "--autofix",
+    "--no-sort-keys",
+    "--no-ensure-ascii",
+  ] },
+  { id = "check-toml" },
+  { id = "check-vcs-permalinks" },
+  { id = "check-yaml", args = [
+    "--disallow-unknown-tags",
+  ] },
+  { id = "check-xml" },
+  { id = "mixed-line-ending", args = [
+    "--fix=lf",
+  ] },
+  { id = "check-symlinks" },
+  { id = "destroyed-symlinks" },
+  { id = "check-merge-conflict" },
+  { id = "detect-private-key" },
+  { id = "check-shebang-scripts-are-executable" },
+  { id = "check-executables-have-shebangs" },
+]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "zig-format"
+name = "zig-format"
+language = "system"
+pass_filenames = false
+entry = "zig fmt ."
+
+[[repos.hooks]]
+id = "zig-check"
+name = "zig-check"
+language = "system"
+pass_filenames = false
+entry = "zig build check"
+
+[[repos.hooks]]
+id = "zig-build"
+name = "zig-build"
+language = "system"
+pass_filenames = false
+groups = ["slow"]
+entry = "zig build -Doptimize=ReleaseFast"
+
+[[repos.hooks]]
+id = "test"
+name = "test"
+language = "system"
+pass_filenames = false
+groups = ["slow"]
+entry = "zig build test"

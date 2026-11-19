@@ -1,0 +1,7 @@
+.{
+    .name = .zigedit,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.17.1",
+    .paths = .{""},
+    .fingerprint = 0x71eca4d253150e3e,
+}
